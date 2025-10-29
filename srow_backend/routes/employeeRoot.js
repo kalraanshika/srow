@@ -1,5 +1,5 @@
 import express from "express";
-import Route from "../models/route.js";   // ✅ Use capitalized model name
+import Route from "../models/Route.js";   // ✅ Use capitalized model name
 import { auth } from "../middleware/auth.js";
 
 const router = express.Router();
