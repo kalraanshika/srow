@@ -31,7 +31,11 @@ export const login = createAsyncThunk(
   "auth/login",
   async ({ email, password }: { email: string; password: string }, { rejectWithValue }) => {
     try {
+      console.log('API URL', API_URL);
+      console.log(email);
+      console.log(password);
       const res = await axios.post(`${API_URL}/login`, { email, password });
+      console.log('RES DATA', res);
       return res.data; 
       
    

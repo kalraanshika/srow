@@ -20,16 +20,20 @@ router.post("/register", async (req, res) => {
 
 // Login
 router.post("/login", async (req, res) => {
+  console.log('body',req.body);
   const { email, password } = req.body;
+  console.log('EmaIL',email);
+  console.log('password', password);
 
   try {
     const user = await User.findOne({ email });
+    console.log('USER DATA', user);
     if (!user) return res.status(400).json({ message: "User not found" ,error});
-    console.log(error);
+    console.log('user not found error',user);
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
-
+    if (!isMatch) return res.status(400).json({ message: "Invalid credentials", error1 });
+    console.log('is match data',isMatch);
     const token = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET,
